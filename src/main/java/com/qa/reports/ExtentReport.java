@@ -18,8 +18,8 @@ public class ExtentReport {
         if (extent == null) {
 
                 ExtentSparkReporter html = new ExtentSparkReporter("TestReport" + File.separator +"Extent.html");
-                html.config().setDocumentTitle("Appium TDD Framework Design");
-                html.config().setReportName("Sauce Lab Appium Test Report");
+                html.config().setDocumentTitle("Foodiish App Automation");
+                html.config().setReportName("Foodiish App Test Report");
                 html.config().setTheme(Theme.DARK);
                 extent = new ExtentReports();
                 extent.attachReporter(html);
