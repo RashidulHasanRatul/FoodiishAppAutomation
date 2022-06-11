@@ -1,6 +1,7 @@
 package com.qa.tests;
 
 import com.qa.BaseTest;
+import com.qa.tests.Pages.HomePage;
 import com.qa.tests.Pages.LoginPage;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -12,6 +13,7 @@ import java.lang.reflect.Method;
 
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
+    HomePage homePage;
     JSONObject loginUsers;
     JSONObject expectedText;
     InputStream ExpectedDatais;
@@ -24,13 +26,9 @@ public class LoginTests extends BaseTest {
         try {
             System.out.println("Before Class");
             String dataFile = "data/loginUsers.json";
-            String ExptectedDataFile = "data/Strings.json";
-            ExpectedDatais = getClass().getClassLoader().getResourceAsStream(ExptectedDataFile);
             datais = getClass().getClassLoader().getResourceAsStream(dataFile);
-            JSONTokener ExpectedDataTockener = new JSONTokener(ExpectedDatais);
             JSONTokener tokener = new JSONTokener(datais);
             loginUsers = new JSONObject(tokener);
-            expectedText = new JSONObject(ExpectedDataTockener);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -39,8 +37,8 @@ public class LoginTests extends BaseTest {
             }
         }
 
-        closeApp();
-        launchApp();
+        //closeApp();
+        //launchApp();
 
     }
 
@@ -55,6 +53,7 @@ public class LoginTests extends BaseTest {
         System.out.println("This is Before Method");
         loginPage = new LoginPage();
         System.out.println("\n" + "+++++++++++++++++ Start of Test +++++++++++++++++" + "\n" + "Test Name: " + method.getName());
+        System.out.println(loginUsers.getJSONObject("invalidUser").getString("username"));
 
     }
 
@@ -67,6 +66,9 @@ public class LoginTests extends BaseTest {
     public void loginTest() throws Exception {
         System.out.println("Login Test");
     }
+
+    // xpath = //android.view.View[@content-desc="Get Started"]
+    // Accessibility Id = Get Started
 
 
 //    @Test
@@ -97,18 +99,7 @@ public class LoginTests extends BaseTest {
 //        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
 //    }
 
-//    @Test
-// This is for Validate Login with Valid UserName and Password
-//    public void validLogin() {
-//        System.out.println("This is valid Password Block");
-//        loginPage.enterUserName(loginUsers.getJSONObject("validUser").getString("username"));
-//        loginPage.enterPassWord(loginUsers.getJSONObject("validUser").getString("password"));
-//        productPage = loginPage.pressLoginButton();
-//        String actualProductTitle = productPage.getProductTitle();
-//        String expectedProductTitle = expectedText.getJSONObject("LoginPageExpectedData").getString("LoginSuccessText");
-//        System.out.println("Actual Product Title: " + actualProductTitle + "\n" + "Expected Product Title: " + expectedProductTitle);
-//        Assert.assertEquals(actualProductTitle, expectedProductTitle);
-//    }
+
 
 
 }
