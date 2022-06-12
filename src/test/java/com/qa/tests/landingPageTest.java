@@ -2,19 +2,23 @@ package com.qa.tests;
 
 import com.qa.BaseTest;
 import com.qa.tests.Pages.RegistrationPage;
-import com.qa.tests.Pages.SplashScreenPage;
+import com.qa.tests.Pages.LandingPage;
 import org.testng.annotations.*;
+
 import java.lang.reflect.Method;
-public class splashScreenTest extends BaseTest {
+
+public class landingPageTest extends BaseTest {
+
+
     RegistrationPage registrationPage;
-    SplashScreenPage splashScreenPage;
+    LandingPage landingPage;
 
     // Before Class
     @BeforeClass
     public void beforeClass() {
         System.out.println("Before Class");
-        //closeApp();
-        //launchApp();
+//        closeApp();
+//        launchApp();
     }
 
     // After Class
@@ -27,6 +31,9 @@ public class splashScreenTest extends BaseTest {
     @BeforeMethod
     public void beforeMethod(Method method) {
         System.out.println("This is Before Method");
+        landingPage = new LandingPage();
+        System.out.println("\n" + "+++++++++++++++++ Start of Test +++++++++++++++++" + "\n" + "Test Name: " + method.getName());
+
     }
 
     // After Method
@@ -39,17 +46,17 @@ public class splashScreenTest extends BaseTest {
     @Test
     public void loginTest() {
         System.out.println("Splash Screen Test");
-
     }
 
     @Test
     //This is for Validate Login with Valid UserName and Password
     public void GotoRegistrationPage() throws InterruptedException {
+
+
         Thread.sleep(8000);
         System.out.println("This is Go to Registration Page ");
-        registrationPage = splashScreenPage.pressGetStartedButton();
+        registrationPage = landingPage.pressLoginButton();
         Thread.sleep(8000);
-
     }
 
 
