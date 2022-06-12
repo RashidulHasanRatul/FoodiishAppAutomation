@@ -10,9 +10,10 @@
         <parameter name="platformName" value="Android"/>
         <parameter name="udid" value="emulator-5554"/>
         <classes>
-            <class name="com.qa.tests.LoginTests"/>
-
+<!--            <class name="com.qa.tests.LoginTests"/>-->
+<!--            <class name="com.qa.tests.RegistrationTest"/>-->
+            <class name="com.qa.tests.landingPageTest"/>
         </classes>
     </test>
 
-</suite> <!-- Suite -->
+</suite>
